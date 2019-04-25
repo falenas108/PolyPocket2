@@ -4,9 +4,17 @@ import { StyleSheet } from 'react-native';
 const { colorScheme, fontFamilies, sizes } = theme;
 
 export default StyleSheet.create({
-    rootContainer: {
-        backgroundColor: colorScheme.backgroundColor,
-        flex: 1,
+    formContainer: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginVertical: 20,
+    },
+    formField: {
+        marginVertical: 10,
+    },
+    formFieldLabel: {
+        alignSelf: 'center',
+        color: colorScheme.paragraphTextColor,
     },
     logoContainer: {
         alignItems: 'center',
@@ -18,5 +26,9 @@ export default StyleSheet.create({
         letterSpacing: 1.5,
         fontFamily: fontFamilies.logo,
         fontSize: sizes.logo,
+    },
+    rootContainer: {
+        backgroundColor: colorScheme.backgroundColor,
+        flex: 1,
     },
 });

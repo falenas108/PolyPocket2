@@ -9,8 +9,10 @@ const theme: Theme = {
     },
     fontFamilies: {
         logo: 'Trebuchet',
+        paragraph: 'Trebuchet',
     },
     sizes: {
+        h2: 20,
         paragraph: 16,
         logo: 50,
     },
@@ -27,8 +29,10 @@ export interface Theme {
     };
     fontFamilies: {
         logo: string;
+        paragraph: string;
     };
     sizes: {
+        h2: number;
         paragraph: number;
         logo: number;
     };
