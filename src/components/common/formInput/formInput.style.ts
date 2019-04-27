@@ -1,5 +1,5 @@
-import theme from '../../../config/theme';
 import { StyleSheet, ViewStyle } from 'react-native';
+import theme from '../../../config/theme';
 import h2Style from '../H2/H2.style';
 
 const { colorScheme } = theme;
@@ -12,7 +12,7 @@ export interface FormInputStyleSchema {
 export default StyleSheet.create({
     formField: {
         backgroundColor: colorScheme.forms.backgroundColor,
-        borderColor: colorScheme.forms.borderColor,
+        borderRadius: 10,
         height: 50,
         width: 100,
     },

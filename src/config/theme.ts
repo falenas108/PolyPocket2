@@ -1,10 +1,18 @@
 const theme: Theme = {
+    buttons: {
+        buttonShape: {
+            borderRadius: 50,
+            height: 60,
+            width: 300,
+        },
+    },
     colorScheme: {
-        backgroundColor: '#9476AB',
+        backgroundColor: '#CCC',
         forms: {
-            backgroundColor: '#FFF',
+            backgroundColor: '#68979B',
             borderColor: '#222',
         },
+        links: '#9476AB',
         paragraphTextColor: '#222',
     },
     fontFamilies: {
@@ -19,12 +27,20 @@ const theme: Theme = {
 };
 
 export interface Theme {
+    buttons: {
+        buttonShape: {
+            borderRadius: number;
+            height: number;
+            width: number;
+        };
+    };
     colorScheme: {
         backgroundColor: string;
         forms: {
             backgroundColor: string;
             borderColor: string;
         };
+        links: string;
         paragraphTextColor: string;
     };
     fontFamilies: {

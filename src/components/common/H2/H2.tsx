@@ -5,7 +5,7 @@ import { Text, TextProps } from 'react-native';
 import omit from '../../../utils/omit';
 
 interface Props extends TextProps {
-    children: JSX.Element | JSX.Element[];
+    children: JSX.Element | JSX.Element[] | string;
     styles?: Partial<H2StyleSchema>;
 }
 
@@ -15,7 +15,7 @@ const defaultProps = {
 
 export default class H2 extends React.Component<Props> {
     static defaultProps = defaultProps;
-    styles = merge(h2Styles, this.props.styles);
+    styles: H2StyleSchema = merge(h2Styles, this.props.styles);
 
     render() {
         return (

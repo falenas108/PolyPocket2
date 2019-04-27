@@ -14,7 +14,10 @@ const defaultProps = {
 
 export default class FormInput extends React.Component<Props> {
     static defaultProps = defaultProps;
-    styles = merge(formStyles, this.props.styles);
+    protected styles: FormInputStyleSchema = merge(
+        formStyles,
+        this.props.styles
+    );
 
     render() {
         return (
