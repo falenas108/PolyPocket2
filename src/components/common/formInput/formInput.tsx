@@ -1,5 +1,6 @@
 import React from 'react';
 import { Input, InputProps } from 'react-native-elements';
+import { handleTextInput } from 'react-native-formik';
 import formStyles, { FormInputStyleSchema } from './formInput.style';
 import merge from '../../../utils/merge';
 import omit from '../../../utils/omit';

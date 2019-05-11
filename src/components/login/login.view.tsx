@@ -1,7 +1,10 @@
 import React from 'react';
-import { Text, SafeAreaView, View, TouchableOpacity } from 'react-native';
+import { Text, SafeAreaView, View } from 'react-native';
 import { loginStyles } from '.';
-import { FormInput, PrimaryButton } from '../common';
+import { PrimaryButton } from '../common';
+import { Formik } from 'formik';
+import { handleTextInput } from 'react-native-formik';
+import { Input } from 'react-native-elements';
 
 interface Props {
     onPressLogin: () => void;
@@ -18,24 +21,38 @@ export default class Login extends React.Component<Props> {
         );
     };
 
-    public LoginForm = (): JSX.Element => {
+    public LoginFormView = (): JSX.Element => {
+        const FormikInput = handleTextInput(Input);
+
         return (
             <View style={this.styles.formContainer}>
-                <FormInput
-                    label={'Username'}
-                    styles={{
-                        formLabel: this.styles.formFieldLabel,
-                        formField: this.styles.formField,
-                    }}
+                <FormikInput
+                    label="Username"
+                    labelStyle={this.styles.formFieldLabel}
+                    name="Username"
+                    type="text"
                 />
-                <FormInput
-                    label={'Password'}
-                    styles={{
-                        formLabel: this.styles.formFieldLabel,
-                        formField: this.styles.formField,
-                    }}
+                <FormikInput
+                    label="Password"
+                    labelStyle={this.styles.formFieldLabel}
+                    name="Password"
+                    type="password"
                 />
             </View>
+        );
+    };
+
+    public LoginForm = (): JSX.Element => {
+        return (
+            <Formik
+                initialValues={{ Username: '', Password: '' }}
+                onSubmit={this.props.onPressLogin}>
+                {() => (
+                    <View style={{ flex: 1 }}>
+                        <this.LoginFormView />
+                    </View>
+                )}
+            </Formik>
         );
     };
 

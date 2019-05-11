@@ -4,18 +4,30 @@ import theme from '../../config/theme';
 const { buttons, colorScheme, sizes } = theme;
 
 export interface HomeSchema {
-    primaryButton: ViewStyle;
-    text: TextStyle;
+    addNewContainer: ViewStyle;
+    addNewText: TextStyle;
+    peopleContainer: ViewStyle;
+    personContainer: ViewStyle;
+    rootContainer: ViewStyle;
 }
 
 export default StyleSheet.create({
-    primaryButton: {
-        ...buttons.buttonShape,
-        alignItems: 'center',
-        backgroundColor: colorScheme.links,
-        justifyContent: 'center',
+    addNewContainer: {
+        flex: 1,
     },
-    text: {
-        color: '#FFF',
+    addNewText: {
+        color: colorScheme.links,
+    },
+    peopleContainer: {
+        marginTop: 30,
+        marginBottom: 50,
+    },
+    personContainer: {
+        marginVertical: 20,
+    },
+    rootContainer: {
+        backgroundColor: colorScheme.backgroundColor,
+        flex: 1,
+        paddingHorizontal: 20,
     },
 });

@@ -1,35 +1,24 @@
 import React from 'react';
-import merge from '../../utils/merge';
-import {
-    TextProps,
-    TouchableOpacity,
-    Text,
-    TouchableOpacityProps,
-} from 'react-native';
-import homeStyles, { HomeSchema } from './home.style';
-import { H2 } from '../common';
-import omit from '../../utils/omit';
+import HomeView from './home.view';
+import { NavigationScreenProp, NavigationRoute } from 'react-navigation';
+import { Person } from '../../models';
 
-interface Props extends TouchableOpacityProps {
-    children: JSX.Element | JSX.Element[] | string;
-    styles?: Partial<HomeSchema>;
+interface Props {
+    navigation: NavigationScreenProp<NavigationRoute<any>>;
 }
 
-const defaultProps = {
-    styles: {},
-};
+export default function Home(props: Props) {
+    const onPressAdd = () => {
+        props.navigation.navigate('PersonForm');
+    };
 
-export default class PrimaryButton extends React.Component<Props> {
-    static defaultProps = defaultProps;
-    styles: HomeSchema = merge(homeStyles, this.props.styles);
+    const onPressEdit = (person: Person) => {
+        props.navigation.navigate('PersonForm', {
+            selectedPerson: person,
+        });
+    };
 
-    render() {
-        return (
-            <TouchableOpacity
-                style={this.styles.primaryButton}
-                {...omit(this.props, 'styles')}>
-                <H2 styles={{ h2: this.styles.text }}>{this.props.children}</H2>
-            </TouchableOpacity>
-        );
-    }
+    console.log(props);
+
+    return <HomeView onPressAdd={onPressAdd} onPressEdit={onPressEdit} />;
 }

@@ -8,6 +8,9 @@ const theme: Theme = {
     },
     colorScheme: {
         backgroundColor: '#CCC',
+        borders: {
+            divider: '#888',
+        },
         forms: {
             backgroundColor: '#68979B',
             borderColor: '#222',
@@ -36,6 +39,9 @@ export interface Theme {
     };
     colorScheme: {
         backgroundColor: string;
+        borders: {
+            divider: string;
+        };
         forms: {
             backgroundColor: string;
             borderColor: string;

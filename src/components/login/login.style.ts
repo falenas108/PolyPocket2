@@ -12,8 +12,8 @@ export default StyleSheet.create({
         marginVertical: 10,
     },
     formFieldLabel: {
-        alignSelf: 'center',
         color: colorScheme.paragraphTextColor,
+        marginStart: 5,
         marginTop: 30,
     },
     loginButton: {

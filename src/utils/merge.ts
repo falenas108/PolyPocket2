@@ -1,6 +1,6 @@
 const deepmerge = require('deepmerge');
 
 export default (...objects: any[]): any => {
-    console.log(objects);
-    return deepmerge.all(objects);
+    const mergeObjects = objects.filter(object => object);
+    return deepmerge.all(mergeObjects);
 };
