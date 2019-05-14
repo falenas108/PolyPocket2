@@ -8,12 +8,12 @@ interface Props {
 }
 
 export default function PersonForm(props: Props) {
-    const [person, setPerson] = useState(
+    const [person, setPerson] = useState<Person>(
         props.navigation.getParam('selectedPerson') || new Person({})
     );
 
-    const onPressSave = () => {
-        // TODO: Handle save
+    const onPressSave = ({ name }: { name: string }) => {
+        console.log(name);
         props.navigation.pop();
     };
 

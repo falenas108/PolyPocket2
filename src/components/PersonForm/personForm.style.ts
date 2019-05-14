@@ -11,7 +11,9 @@ export interface PersonFormSchema {
 }
 
 export default StyleSheet.create({
-    formContainer: {},
+    formContainer: {
+        paddingVertical: 40,
+    },
     formFieldLabel: {
         ...H2Style.h2,
     },

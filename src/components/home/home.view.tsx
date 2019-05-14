@@ -9,6 +9,8 @@ import homeStyles, { HomeSchema } from './home.style';
 import { H2, HorizontalDivider, Paragraph } from '../common';
 import { Person } from '../../models';
 import { FlatList } from 'react-native-gesture-handler';
+import AppStore from '../../models/AppStore';
+import { connect } from 'react-redux';
 
 interface Props extends TouchableOpacityProps {
     children?: JSX.Element | JSX.Element[] | string;
@@ -17,7 +19,7 @@ interface Props extends TouchableOpacityProps {
     styles?: Partial<HomeSchema>;
 }
 
-export default function HomeView(props: Props) {
+export function HomeView(props: Props) {
     const styles: HomeSchema = merge(homeStyles, props.styles);
     const [people, setPeople] = useState([
         new Person({ id: 0, name: 'Edric' }),
@@ -65,3 +67,10 @@ export default function HomeView(props: Props) {
         </ScrollView>
     );
 }
+
+const mapStateToProps = (state: AppStore) => {
+    console.log(state);
+    return { person: state.people };
+};
+
+export default connect(mapStateToProps)(HomeView);

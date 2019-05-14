@@ -18,7 +18,5 @@ export default function Home(props: Props) {
         });
     };
 
-    console.log(props);
-
     return <HomeView onPressAdd={onPressAdd} onPressEdit={onPressEdit} />;
 }

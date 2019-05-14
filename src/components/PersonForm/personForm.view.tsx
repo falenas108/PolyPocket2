@@ -6,10 +6,11 @@ import { Formik } from 'formik';
 import { Person } from '../../models';
 import { Input } from 'react-native-elements';
 import { handleTextInput } from 'react-native-formik';
+import { PrimaryButton } from '../common';
 
 interface Props extends TouchableOpacityProps {
     children?: JSX.Element | JSX.Element[] | string;
-    onPressSave: () => void;
+    onPressSave: ({ name }: { name: string }) => void;
     person: Person;
     styles?: Partial<PersonFormSchema>;
 }
@@ -22,9 +23,12 @@ export default function PersonForm(props: Props) {
             <Formik
                 initialValues={{ name: props.person.name }}
                 onSubmit={props.onPressSave}>
-                {() => (
+                {props => (
                     <View style={{ flex: 1 }}>
                         <FormItemContents />
+                        <PrimaryButton onPress={props.handleSubmit}>
+                            Save
+                        </PrimaryButton>
                     </View>
                 )}
             </Formik>
