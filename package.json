@@ -8,6 +8,7 @@
         "tsc": "tsc --noEmit --skipLibCheck"
     },
     "dependencies": {
+        "@react-native-community/async-storage": "^1.4.2",
         "@types/react-redux": "^7.0.9",
         "deepmerge": "^3.2.0",
         "formik": "^1.5.4",

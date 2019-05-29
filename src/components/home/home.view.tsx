@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import merge from '../../utils/merge';
 import {
     TouchableOpacityProps,
@@ -9,29 +9,23 @@ import homeStyles, { HomeSchema } from './home.style';
 import { H2, HorizontalDivider, Paragraph } from '../common';
 import { Person } from '../../models';
 import { FlatList } from 'react-native-gesture-handler';
-import AppStore from '../../models/AppStore';
-import { connect } from 'react-redux';
 
 interface Props extends TouchableOpacityProps {
     children?: JSX.Element | JSX.Element[] | string;
     onPressAdd: () => void;
     onPressEdit: (person: Person) => void;
+    people: Person[];
     styles?: Partial<HomeSchema>;
 }
 
-export function HomeView(props: Props) {
+export default function HomeView(props: Props) {
     const styles: HomeSchema = merge(homeStyles, props.styles);
-    const [people, setPeople] = useState([
-        new Person({ id: 0, name: 'Edric' }),
-        new Person({ id: 1, name: 'Heather' }),
-        new Person({ id: 2, name: 'Abby' }),
-    ]);
 
     const PersonList = () => {
         return (
             <FlatList
                 contentContainerStyle={styles.peopleContainer}
-                data={people}
+                data={props.people}
                 keyExtractor={item => item.id.toString()}
                 ItemSeparatorComponent={HorizontalDivider}
                 ListFooterComponent={HorizontalDivider}
@@ -67,10 +61,3 @@ export function HomeView(props: Props) {
         </ScrollView>
     );
 }
-
-const mapStateToProps = (state: AppStore) => {
-    console.log(state);
-    return { person: state.people };
-};
-
-export default connect(mapStateToProps)(HomeView);

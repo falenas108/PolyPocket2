@@ -10,7 +10,7 @@ import { PrimaryButton } from '../common';
 
 interface Props extends TouchableOpacityProps {
     children?: JSX.Element | JSX.Element[] | string;
-    onPressSave: ({ name }: { name: string }) => void;
+    onPressSave: (person: Partial<Person>) => void;
     person: Person;
     styles?: Partial<PersonFormSchema>;
 }
@@ -21,7 +21,7 @@ export default function PersonForm(props: Props) {
     const FormItem = () => {
         return (
             <Formik
-                initialValues={{ name: props.person.name }}
+                initialValues={{ id: props.person.id, name: props.person.name }}
                 onSubmit={props.onPressSave}>
                 {props => (
                     <View style={{ flex: 1 }}>
