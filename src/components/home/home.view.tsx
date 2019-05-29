@@ -28,7 +28,6 @@ export default function HomeView(props: Props) {
                 data={props.people}
                 keyExtractor={item => item.id.toString()}
                 ItemSeparatorComponent={HorizontalDivider}
-                ListFooterComponent={HorizontalDivider}
                 renderItem={PersonItem}
             />
         );

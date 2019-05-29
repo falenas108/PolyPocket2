@@ -1,18 +1,18 @@
 import { StyleSheet, ViewStyle, TextStyle } from 'react-native';
 import theme from '../../../config/theme';
 
-const { buttons, colorScheme, sizes } = theme;
+const { buttons, colorScheme } = theme;
 
-export interface PrimaryButtonSchema {
-    primaryButton: ViewStyle;
+export interface SecondaryButtonSchema {
+    secondaryButton: ViewStyle;
     text: TextStyle;
 }
 
 export default StyleSheet.create({
-    primaryButton: {
+    secondaryButton: {
         ...buttons.buttonShape,
         alignItems: 'center',
-        backgroundColor: colorScheme.links,
+        backgroundColor: colorScheme.linksAlternate,
         justifyContent: 'center',
     },
     text: {

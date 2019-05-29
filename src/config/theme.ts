@@ -16,6 +16,7 @@ const theme: Theme = {
             borderColor: '#222',
         },
         links: '#9476AB',
+        linksAlternate: '#663312',
         paragraphTextColor: '#222',
     },
     fontFamilies: {
@@ -47,6 +48,7 @@ export interface Theme {
             borderColor: string;
         };
         links: string;
+        linksAlternate: string;
         paragraphTextColor: string;
     };
     fontFamilies: {

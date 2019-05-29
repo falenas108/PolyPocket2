@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, SafeAreaView, View } from 'react-native';
 import { loginStyles } from '.';
-import { PrimaryButton } from '../common';
+import { ButtonPrimary } from '../common';
 import { Formik } from 'formik';
 import { handleTextInput } from 'react-native-formik';
 import { Input } from 'react-native-elements';
@@ -59,9 +59,9 @@ export default class Login extends React.Component<Props> {
     public LoginButton = (): JSX.Element => {
         return (
             <View style={this.styles.loginButton}>
-                <PrimaryButton onPress={this.props.onPressLogin}>
+                <ButtonPrimary onPress={this.props.onPressLogin}>
                     Login
-                </PrimaryButton>
+                </ButtonPrimary>
             </View>
         );
     };

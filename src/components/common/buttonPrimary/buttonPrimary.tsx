@@ -1,14 +1,9 @@
 import React from 'react';
 import primaryButtonStyles, {
     PrimaryButtonSchema,
-} from './primaryButton.style';
+} from './buttonPrimary.style';
 import merge from '../../../utils/merge';
-import {
-    TextProps,
-    TouchableOpacity,
-    Text,
-    TouchableOpacityProps,
-} from 'react-native';
+import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
 import omit from '../../../utils/omit';
 import { H2 } from '..';
 
@@ -21,7 +16,7 @@ const defaultProps = {
     styles: {},
 };
 
-export default class PrimaryButton extends React.Component<Props> {
+export default class ButtonPrimary extends React.Component<Props> {
     static defaultProps = defaultProps;
     styles: PrimaryButtonSchema = merge(primaryButtonStyles, this.props.styles);
 

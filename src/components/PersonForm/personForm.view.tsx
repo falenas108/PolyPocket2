@@ -6,11 +6,12 @@ import { Formik } from 'formik';
 import { Person } from '../../models';
 import { Input } from 'react-native-elements';
 import { handleTextInput } from 'react-native-formik';
-import { PrimaryButton } from '../common';
+import { ButtonPrimary, ButtonSecondary } from '../common';
 
 interface Props extends TouchableOpacityProps {
     children?: JSX.Element | JSX.Element[] | string;
-    onPressSave: (person: Partial<Person>) => void;
+    onPressDelete: (person: Person) => void;
+    onPressSave: (person: Person) => void;
     person: Person;
     styles?: Partial<PersonFormSchema>;
 }
@@ -23,12 +24,18 @@ export default function PersonForm(props: Props) {
             <Formik
                 initialValues={{ id: props.person.id, name: props.person.name }}
                 onSubmit={props.onPressSave}>
-                {props => (
-                    <View style={{ flex: 1 }}>
+                {formikProps => (
+                    <View style={{ flex: 1, alignItems: 'center' }}>
                         <FormItemContents />
-                        <PrimaryButton onPress={props.handleSubmit}>
+                        <ButtonPrimary onPress={formikProps.handleSubmit}>
                             Save
-                        </PrimaryButton>
+                        </ButtonPrimary>
+                        <ButtonSecondary
+                            onPress={() =>
+                                props.onPressDelete(formikProps.values)
+                            }>
+                            Delete
+                        </ButtonSecondary>
                     </View>
                 )}
             </Formik>

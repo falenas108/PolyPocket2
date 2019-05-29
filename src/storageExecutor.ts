@@ -15,9 +15,7 @@ export default class StoreExecutor {
         return StoreExecutor.maxId;
     };
 
-    public static addPerson = async (
-        newPerson: Partial<Person>
-    ): Promise<void> => {
+    public static addPerson = async (newPerson: Person): Promise<void> => {
         newPerson = { ...newPerson, id: await StoreExecutor.getMaxId() };
         StoreExecutor.maxId++;
         const people: Person[] = JSON.parse(
@@ -25,6 +23,15 @@ export default class StoreExecutor {
         ) as Person[];
         people.push(newPerson as Person);
         return AsyncStorage.setItem('people', JSON.stringify(people));
+    };
+
+    public static deletePerson = async (
+        deletedPerson: Person
+    ): Promise<void> => {
+        const updatedPeople = (await StoreExecutor.getPeople()).filter(
+            person => person.id !== deletedPerson.id
+        );
+        return AsyncStorage.setItem('people', JSON.stringify(updatedPeople));
     };
 
     public static getPeople = async (): Promise<Person[]> => {

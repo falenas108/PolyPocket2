@@ -13,12 +13,23 @@ export default function PersonForm(props: Props) {
         props.navigation.getParam('selectedPerson') || new Person()
     );
 
-    const onPressSave = (person: Partial<Person>) => {
-        person.id
-            ? StoreExecutor.updatePerson(person as Person)
-            : StoreExecutor.addPerson(person);
+    const onPressDelete = async (person: Person) => {
+        await (person.id > -1 ? StoreExecutor.deletePerson(person) : null);
         props.navigation.pop();
     };
 
-    return <PersonFormView onPressSave={onPressSave} person={person} />;
+    const onPressSave = async (person: Person) => {
+        await (person.id > -1
+            ? StoreExecutor.updatePerson(person)
+            : StoreExecutor.addPerson(person));
+        props.navigation.pop();
+    };
+
+    return (
+        <PersonFormView
+            onPressDelete={onPressDelete}
+            onPressSave={onPressSave}
+            person={person}
+        />
+    );
 }
